@@ -43,8 +43,9 @@
 }
 
 :root {
+  --text-sm: 1rem;
   --radius: 0.625rem;
-  --background: oklch(97.846% 0.00762 229.419);
+  --background: oklch(97.777% 0.01237 216.249);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -117,8 +118,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground p-12;
+    @apply bg-background text-foreground;
+    font-family: "Poppins", ui-sans-serif, system-ui;
+    font-size: large;
   }
   button {
     @apply cursor-pointer;

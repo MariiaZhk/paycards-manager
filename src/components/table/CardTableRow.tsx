@@ -1,6 +1,6 @@
 import type { Card } from "@/common/types";
 import { Button } from "@/components/ui/Button/button";
-import { TableCell, TableRow } from "@/components/ui/table";
+import { TableCell, TableRow } from "@/components/ui/Table/table";
 import { FaTrashCan } from "react-icons/fa6";
 import { ImRadioChecked2 } from "react-icons/im";
 
@@ -20,7 +20,7 @@ const CardTableRow = ({ card, onDelete, onSetDefault }: CardTableRowProps) => {
         <Button
           variant="ghost"
           onClick={() => !card.isDefault && onSetDefault(card.id)}
-          disabled={card.isDefault}
+          // disabled={card.isDefault}
           size="sm"
           className={`flex items-center justify-start gap-2 ${
             card.isDefault
