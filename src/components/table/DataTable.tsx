@@ -14,7 +14,7 @@ interface CardTableProps {
   onSetDefault: (id: string) => void;
 }
 
-const CardTable = ({ cards, onDelete, onSetDefault }: CardTableProps) => (
+const DataTable = ({ cards, onDelete, onSetDefault }: CardTableProps) => (
   <Table>
     <TableHeader>
       <TableRow>
@@ -38,4 +38,4 @@ const CardTable = ({ cards, onDelete, onSetDefault }: CardTableProps) => (
   </Table>
 );
 
-export default CardTable;
+export default DataTable;
