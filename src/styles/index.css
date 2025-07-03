@@ -76,13 +76,13 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --checked: oklch(0.488 0.243 264.376);
+  --checked: oklch(44.532% 0.08024 228.576);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(19.689% 0.0016 16.521);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  --card: oklch(29.417% 0.00144 15.958);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);

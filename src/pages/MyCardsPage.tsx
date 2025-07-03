@@ -4,6 +4,7 @@ import type { Card } from "@/common/types";
 import DataTable from "@/components/table/DataTable";
 import CardFilter from "@/components/filter/CardsFilter";
 import { NewCardDialog } from "@/components/dialog/NewCardDialog";
+import { ThemeToggler } from "@/components/theme-togler/ThemeToggler";
 
 const MyCardsPage = () => {
   const [cards, setCards] = useState<Card[]>(mockCards);
@@ -33,20 +34,24 @@ const MyCardsPage = () => {
   );
 
   return (
-    <div className="p-4 bg-[var(--color-card)] rounded-lg shadow-md max-w-[1000px] mx-auto my-6 ">
-      <div className="flex items-baseline justify-between mb-6">
-        <h1 className="text-2xl font-bold">My Cards</h1>
-        <div className="flex items-center gap-2">
-          <CardFilter filterValue={filter} onFilterChange={setFilter} />
-          <NewCardDialog onAdd={handleAddCard} />
+    <>
+      <div className="p-10 bg-[var(--color-card)] rounded-lg shadow-md max-w-[1000px] mx-auto my-6 ">
+        <div className="flex items-baseline justify-between mb-6">
+          {" "}
+          <h1 className="text-2xl font-bold">My Cards</h1>
+          <div className="flex items-center gap-2">
+            <CardFilter filterValue={filter} onFilterChange={setFilter} />{" "}
+            <ThemeToggler />
+            <NewCardDialog onAdd={handleAddCard} />
+          </div>
         </div>
+        <DataTable
+          cards={filteredCards}
+          onDelete={handleDelete}
+          onSetDefault={handleSetDefault}
+        />
       </div>
-      <DataTable
-        cards={filteredCards}
-        onDelete={handleDelete}
-        onSetDefault={handleSetDefault}
-      />
-    </div>
+    </>
   );
 };
 
