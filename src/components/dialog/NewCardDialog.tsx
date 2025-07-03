@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import type { Card } from "@/common/types";
 import { Button } from "@/components/ui/Button/button";
 import { Input } from "@/components/ui/input";
+import { FaPlus } from "react-icons/fa6";
 import sprite from "../../assets/sprite.svg";
 
 import {
@@ -113,7 +114,9 @@ export const NewCardDialog = ({ onAdd }: Props) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm">Add New</Button>
+        <Button size="icon" variant="outline" className="rounded-full p-2">
+          <FaPlus className="w-4 h-4" />
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="max-w-sm" showCloseButton>
@@ -277,7 +280,7 @@ export const NewCardDialog = ({ onAdd }: Props) => {
             />
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="default" type="button">
+                <Button variant="outline" type="button">
                   Cancel
                 </Button>
               </DialogClose>

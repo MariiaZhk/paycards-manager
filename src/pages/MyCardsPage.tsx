@@ -4,7 +4,7 @@ import type { Card } from "@/common/types";
 import DataTable from "@/components/table/DataTable";
 import CardFilter from "@/components/filter/CardsFilter";
 import { NewCardDialog } from "@/components/dialog/NewCardDialog";
-import { ThemeToggler } from "@/components/theme-togler/ThemeToggler";
+import { ThemeToggler } from "@/components/theme-toggler/ThemeToggler";
 
 const MyCardsPage = () => {
   const [cards, setCards] = useState<Card[]>(mockCards);
@@ -37,7 +37,6 @@ const MyCardsPage = () => {
     <>
       <div className="p-10 bg-[var(--color-card)] rounded-lg shadow-md max-w-[1000px] mx-auto my-6 ">
         <div className="flex items-baseline justify-between mb-6">
-          {" "}
           <h1 className="text-2xl font-bold">My Cards</h1>
           <div className="flex items-center gap-2">
             <CardFilter filterValue={filter} onFilterChange={setFilter} />{" "}
@@ -45,11 +44,18 @@ const MyCardsPage = () => {
             <NewCardDialog onAdd={handleAddCard} />
           </div>
         </div>
-        <DataTable
-          cards={filteredCards}
-          onDelete={handleDelete}
-          onSetDefault={handleSetDefault}
-        />
+        {filteredCards.length === 0 ? (
+          <p className="text-center text-muted-foreground py-6">
+            No cards match your search. Please try a different brand or the last
+            4 digits.
+          </p>
+        ) : (
+          <DataTable
+            cards={filteredCards}
+            onDelete={handleDelete}
+            onSetDefault={handleSetDefault}
+          />
+        )}
       </div>
     </>
   );
