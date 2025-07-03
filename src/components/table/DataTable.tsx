@@ -4,7 +4,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/Table/table";
+} from "@/components/ui/table";
 import type { Card } from "@/common/types";
 import CardTableRow from "./CardTableRow";
 
