@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import type { Card } from "@/common/types";
 import { Button } from "@/components/ui/Button/button";
 import { Input } from "@/components/ui/input";
+import sprite from "../../assets/sprite.svg";
 
 import {
   Dialog,
@@ -67,8 +68,6 @@ export const NewCardDialog = ({ onAdd }: Props) => {
   const cardNumber = watch("cardNumber") || "";
   const selectedYear = watch("expirationYear");
   const brand = getCardBrand(cardNumber.replace(/\s/g, ""));
-  const inputRef = useRef<HTMLInputElement>(null);
-
   const months = getMonths();
   const years = getYears();
 
@@ -104,6 +103,7 @@ export const NewCardDialog = ({ onAdd }: Props) => {
       last4: data.cardNumber.replace(/\s/g, "").slice(-4),
       isDefault: false,
       expirationDate: `${data.expirationMonth} / ${data.expirationYear}`,
+      brandIcon: `${sprite}#icon-${brand}`,
     });
 
     reset();
@@ -144,7 +144,6 @@ export const NewCardDialog = ({ onAdd }: Props) => {
                     <FormControl>
                       <Input
                         {...field}
-                        ref={inputRef}
                         placeholder="0000 0000 0000 0000"
                         maxLength={19}
                         onChange={(e) =>
@@ -156,20 +155,21 @@ export const NewCardDialog = ({ onAdd }: Props) => {
                         className="pr-20"
                       />
                     </FormControl>
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-sm text-gray-600 uppercase">
-                      {cardNumber.trim() && brand ? brand : ""}
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
                       {cardNumber.trim() && brand === "visa" && (
-                        <img src="/visa.svg" alt="Visa" className="h-5" />
+                        <svg className="w-10">
+                          <use href={`${sprite}#icon-visa`} />
+                        </svg>
                       )}
                       {cardNumber.trim() && brand === "mastercard" && (
-                        <img
-                          src="/mastercard.svg"
-                          alt="Mastercard"
-                          className="h-5"
-                        />
+                        <svg className="w-10">
+                          <use href={`${sprite}#icon-mastercard`} />
+                        </svg>
                       )}
                       {cardNumber.trim() && brand === "amex" && (
-                        <img src="/amex.svg" alt="Amex" className="h-5" />
+                        <svg className="w-10">
+                          <use href={`${sprite}#icon-amex`} />
+                        </svg>
                       )}
                     </span>
                   </div>

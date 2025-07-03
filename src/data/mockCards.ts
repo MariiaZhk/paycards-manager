@@ -1,3 +1,6 @@
+import type { Card } from "@/common/types";
+import sprite from "../assets/sprite.svg";
+
 export const mockCards: Card[] = [
   {
     id: "1",
@@ -5,6 +8,7 @@ export const mockCards: Card[] = [
     last4: "1234",
     isDefault: true,
     expirationDate: "12 / 25",
+    brandIcon: `${sprite}#icon-visa`,
   },
   {
     id: "2",
@@ -12,6 +16,7 @@ export const mockCards: Card[] = [
     last4: "5678",
     isDefault: false,
     expirationDate: "11 / 24",
+    brandIcon: `${sprite}#icon-mastercard`,
   },
   {
     id: "3",
@@ -19,6 +24,7 @@ export const mockCards: Card[] = [
     last4: "9017",
     isDefault: false,
     expirationDate: "01 / 26",
+    brandIcon: `${sprite}#icon-amex`,
   },
   {
     id: "4",
@@ -26,6 +32,7 @@ export const mockCards: Card[] = [
     last4: "5670",
     isDefault: false,
     expirationDate: "05 / 23",
+    brandIcon: `${sprite}#icon-mastercard`,
   },
   {
     id: "5",
@@ -33,5 +40,6 @@ export const mockCards: Card[] = [
     last4: "9002",
     isDefault: false,
     expirationDate: "06 / 27",
+    brandIcon: `${sprite}#icon-amex`,
   },
 ];

@@ -13,7 +13,13 @@ interface CardTableRowProps {
 const CardTableRow = ({ card, onDelete, onSetDefault }: CardTableRowProps) => {
   return (
     <TableRow>
-      <TableCell>{card.brand}</TableCell>
+      <TableCell className="flex items-center gap-2">
+        <svg className="w-16 h-16">
+          <use href={card.brandIcon} />
+        </svg>
+        <span className="capitalize">{card.brand}</span>
+      </TableCell>
+
       <TableCell>{card.last4}</TableCell>
 
       <TableCell>
@@ -31,8 +37,8 @@ const CardTableRow = ({ card, onDelete, onSetDefault }: CardTableRowProps) => {
           <ImRadioChecked2
             className={
               card.isDefault
-                ? "color-[var(--checked)]"
-                : "color-[var(--checked)]/20"
+                ? "text-[var(--checked)]"
+                : "text-[var(--checked)]/20"
             }
           />
           Default

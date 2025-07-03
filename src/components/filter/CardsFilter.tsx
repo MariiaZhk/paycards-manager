@@ -7,7 +7,7 @@ interface CardFilterProps {
 
 const CardFilter = ({ filterValue, onFilterChange }: CardFilterProps) => {
   return (
-    <div className="mb-4">
+    <div>
       <Input
         type="text"
         placeholder="Filter by brand or last 4 digits"

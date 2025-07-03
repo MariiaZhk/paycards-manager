@@ -33,8 +33,8 @@ const MyCardsPage = () => {
   );
 
   return (
-    <div className="p-4 bg-[var(--color-card)] rounded-lg shadow-md max-w-[1200px] mx-auto my-6 ">
-      <div className="flex items-baseline justify-between">
+    <div className="p-4 bg-[var(--color-card)] rounded-lg shadow-md max-w-[1000px] mx-auto my-6 ">
+      <div className="flex items-baseline justify-between mb-6">
         <h1 className="text-2xl font-bold">My Cards</h1>
         <div className="flex items-center gap-2">
           <CardFilter filterValue={filter} onFilterChange={setFilter} />
