@@ -1,10 +1,8 @@
-# 💳пш Payment Cards Manager – React + TypeScript App
+# 💳 Payment Cards Manager App
 
-**Card Manager** is a modern and responsive user interface for managing payment cards — view, add, filter, set as default, and delete cards. Built using **React**, **TypeScript**, and **shadcn/ui**, with data stored locally (mocked for demonstration).
+**Payment Cards Manager** is a frontend app for managing payment cards — view, add, filter, set as default, and delete. Built using **Vite**, **React**, **TypeScript**, and **shadcn/ui**.
 
-🔗 **Live Demo**: _link_
-
----
+🔗 **Live Demo**: _add the link if deployed_
 
 ## 📑 Table of Contents
 
@@ -14,35 +12,29 @@
 - [Getting Started](#getting-started)
 - [Author](#author)
 
----
-
 ## 📖 Description
 
-This application features a `/my-cards` page where users can:
+This application provides an interface for managing payment cards. On the `/my-cards` page, users can:
 
 - View their saved payment cards in a table format.
-- Add a new card using a modal dialog with form validation.
-- Filter existing cards by brand or last 4 digits.
-- Mark any card as the default.
+- Add new cards using a modal form with validation.
+- Filter cards by brand or last 4 digits.
+- Set any card as the default.
 - Delete cards.
 
-The app uses fully mocked data and does not persist to a backend. It’s intended as a UI prototype or a front-end tech demo.
-
----
+The app starts with mocked card data and stores added cards in `localStorage`. It does not persist data to a backend and is intended as a UI prototype or tech demo.
 
 ## 🚀 Features
 
 - 📋 Display user payment cards in a data table
-- ➕ Add a new card using a form in a modal dialog
+- ➕ Add a new card via modal form
 - 🗂 Filter cards by brand or last 4 digits
-- 🌟 Set any card as the default
-- 🗑️ Delete cards
-- ⌛ Manage `loading` and `empty` UI states
-- 🌙 Dark and light theme toggle
-- 📱 Fully responsive design for all screen sizes
-- ✅ Form validation with **React Hook Form** and **Zod**
-
----
+- 🌟 Mark a card as the default
+- 🗑️ Delete existing cards
+- ⌛ Handle `loading` and `empty` UI states
+- 🌙 Toggle between dark and light themes
+- 📱 Responsive design for all screen sizes
+- ✅ Form validation using **React Hook Form** and **Zod**
 
 ## 🧪 Tech Stack
 
@@ -54,10 +46,12 @@ The app uses fully mocked data and does not persist to a backend. It’s intende
 
 ### UI & Styling
 
-- **shadcn/ui** (built on Radix UI)
+- **shadcn/ui** (based on Radix UI)
 - **Tailwind CSS**
-- **clsx** + **class-variance-authority**
-- **lucide-react**+**react-icons** (icons)
+- **clsx**
+- **class-variance-authority**
+- **lucide-react**
+- **react-icons**
 
 ### Forms & Validation
 
@@ -85,19 +79,25 @@ To run the project locally:
 
    ```bash
    npm install
+   # or
+   yarn install
+   # or
+   pnpm install
    ```
 
 4. **Start the development server**:
 
    ```bash
    npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
    ```
 
----
+5. Open [http://localhost:5173/my-cards](http://localhost:5173/my-cards) in your browser.
 
 ## 👤 Author
 
 **Mariia Zh.** — Frontend Developer  
 🔗 [GitHub Profile](https://github.com/MariiaZhk)
-
----
