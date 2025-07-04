@@ -1,3 +1,5 @@
+import type { Card } from "@/common/types";
+import CardTableRow from "./CardTableRow";
 import {
   Table,
   TableBody,
@@ -5,8 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { Card } from "@/common/types";
-import CardTableRow from "./CardTableRow";
 
 interface CardTableProps {
   cards: Card[];
@@ -15,27 +15,29 @@ interface CardTableProps {
 }
 
 const DataTable = ({ cards, onDelete, onSetDefault }: CardTableProps) => (
-  <Table>
-    <TableHeader>
-      <TableRow>
-        <TableHead>Brand</TableHead>
-        <TableHead>Last4</TableHead>
-        <TableHead>Default</TableHead>
-        <TableHead>Actions</TableHead>
-      </TableRow>
-    </TableHeader>
+  <div className="w-full overflow-x-auto">
+    <Table className="min-w-[600px]">
+      <TableHeader>
+        <TableRow>
+          <TableHead>Brand</TableHead>
+          <TableHead>Last4</TableHead>
+          <TableHead>Default</TableHead>
+          <TableHead>Actions</TableHead>
+        </TableRow>
+      </TableHeader>
 
-    <TableBody>
-      {cards.map((card) => (
-        <CardTableRow
-          key={card.id}
-          card={card}
-          onDelete={onDelete}
-          onSetDefault={onSetDefault}
-        />
-      ))}
-    </TableBody>
-  </Table>
+      <TableBody>
+        {cards.map((card) => (
+          <CardTableRow
+            key={card.id}
+            card={card}
+            onDelete={onDelete}
+            onSetDefault={onSetDefault}
+          />
+        ))}
+      </TableBody>
+    </Table>
+  </div>
 );
 
 export default DataTable;

@@ -1,5 +1,5 @@
 import type { Card } from "@/common/types";
-import sprite from "../assets/sprite.svg";
+import sprite from "@/assets/sprite.svg";
 
 export const mockCards: Card[] = [
   {

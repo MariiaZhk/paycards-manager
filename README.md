@@ -2,7 +2,7 @@
 
 **Payment Cards Manager** is a frontend app for managing payment cards — view, add, filter, set as default, and delete. Built using **Vite**, **React**, **TypeScript**, and **shadcn/ui**.
 
-🔗 **Live Demo**: _add the link if deployed_
+🔗 **Live Demo:** [https://paycards-manager.vercel.app/](https://paycards-manager.vercel.app/)
 
 ## 📑 Table of Contents
 
@@ -94,8 +94,6 @@ To run the project locally:
    # or
    pnpm dev
    ```
-
-5. Open [http://localhost:5173/my-cards](http://localhost:5173/my-cards) in your browser.
 
 ## 👤 Author
 

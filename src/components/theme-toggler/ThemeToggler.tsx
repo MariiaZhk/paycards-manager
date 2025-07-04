@@ -1,5 +1,5 @@
 import { Switch } from "@/components/ui/switch";
-import { useTheme } from "../../providers/theme/useTheme";
+import { useTheme } from "@/providers/theme/useTheme";
 
 export function ThemeToggler() {
   const { theme, setTheme } = useTheme();

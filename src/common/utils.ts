@@ -1,4 +1,4 @@
-import type { CardBrand } from "./types";
+import type { CardBrand } from "@/common/types";
 
 export function getCardBrand(number: string): CardBrand {
   if (number.startsWith("4")) return "visa";

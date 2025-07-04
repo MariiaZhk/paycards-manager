@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { mockCards } from "../data/mockCards";
+import { mockCards } from "@/data/mockCards";
 import type { Card } from "@/common/types";
 import DataTable from "@/components/table/DataTable";
 import CardFilter from "@/components/filter/CardsFilter";
@@ -8,17 +8,32 @@ import { ThemeToggler } from "@/components/theme-toggler/ThemeToggler";
 
 const MyCardsPage = () => {
   const [filter, setFilter] = useState("");
-  const [cards, setCards] = useState<Card[]>(() => {
-    const saved = localStorage.getItem("cards");
-    return saved ? JSON.parse(saved) : mockCards;
-  });
+  const [loading, setLoading] = useState(true);
+  const [cards, setCards] = useState<Card[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("cards", JSON.stringify(cards));
-  }, [cards]);
+    const saved = localStorage.getItem("cards");
+    const initialCards = saved ? JSON.parse(saved) : mockCards;
+
+    const timeoutId = setTimeout(() => {
+      setCards(initialCards);
+      setLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      localStorage.setItem("cards", JSON.stringify(cards));
+    }
+  }, [cards, loading]);
 
   const handleAddCard = (card: Card) => {
-    setCards((prev) => [...prev, card]);
+    setCards((prev) => {
+      const updated = [...prev, { ...card, isDefault: prev.length === 0 }];
+      return updated;
+    });
     setFilter("");
   };
 
@@ -60,19 +75,30 @@ const MyCardsPage = () => {
 
   return (
     <>
-      <div className="p-10 bg-[var(--color-card)] rounded-lg shadow-md max-w-[1000px] mx-auto my-6 ">
-        <div className="flex items-baseline justify-between mb-6">
-          <h1 className="text-2xl font-bold">My Cards</h1>
-          <div className="flex items-center gap-2">
-            <CardFilter filterValue={filter} onFilterChange={setFilter} />{" "}
-            <ThemeToggler />
-            <NewCardDialog onAdd={handleAddCard} />
+      <div className="w-full p-8 bg-[var(--color-card)] rounded-lg shadow-lg max-w-[90%] lg:max-w-[900px] mx-auto my-8">
+        <div className="flex flex-col  md:items-baseline md:justify-between gap-4 mb-6">
+          <div className="flex flex-wrap items-end justify-between gap-2 w-full">
+            <h1 className="text-2xl font-bold self-center">My Cards</h1>
+            <div className="flex gap-2 items-center">
+              <ThemeToggler />
+              <NewCardDialog onAdd={handleAddCard} />
+            </div>
+          </div>
+          <div className="w-full max-w-lg">
+            <CardFilter filterValue={filter} onFilterChange={setFilter} />
           </div>
         </div>
-        {filteredCards.length === 0 ? (
+
+        {loading ? (
+          <p className="text-center text-muted-foreground py-6">Loading...</p>
+        ) : cards.length === 0 ? (
           <p className="text-center text-muted-foreground py-6">
-            No cards match your search. Please try a different brand or the last
-            4 digits.
+            You haven't added any cards yet.
+          </p>
+        ) : filteredCards.length === 0 ? (
+          <p className="text-center text-muted-foreground py-6">
+            No cards match your search. Try a different brand or the last 4
+            digits.
           </p>
         ) : (
           <DataTable

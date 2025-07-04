@@ -5,7 +5,8 @@ import type { Card } from "@/common/types";
 import { Button } from "@/components/ui/Button/button";
 import { Input } from "@/components/ui/input";
 import { FaPlus } from "react-icons/fa6";
-import sprite from "../../assets/sprite.svg";
+import sprite from "@/assets/sprite.svg";
+import { ClipLoader } from "react-spinners";
 import {
   Dialog,
   DialogTrigger,
@@ -53,6 +54,7 @@ interface Props {
 
 export const NewCardDialog = ({ onAdd }: Props) => {
   const [open, setOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormValues>({
     defaultValues: {
@@ -93,21 +95,25 @@ export const NewCardDialog = ({ onAdd }: Props) => {
         message: "Expiration date cannot be in the past",
       });
       return;
-    } else {
-      clearErrors(["expirationMonth", "expirationYear"]);
     }
 
-    onAdd({
-      id: uuidv4(),
-      brand,
-      last4: data.cardNumber.replace(/\s/g, "").slice(-4),
-      isDefault: false,
-      expirationDate: `${data.expirationMonth} / ${data.expirationYear}`,
-      brandIcon: `${sprite}#icon-${brand}`,
-    });
+    clearErrors(["expirationMonth", "expirationYear"]);
+    setIsSubmitting(true);
 
-    reset();
-    setOpen(false);
+    setTimeout(() => {
+      onAdd({
+        id: uuidv4(),
+        brand,
+        last4: data.cardNumber.replace(/\s/g, "").slice(-4),
+        isDefault: false,
+        expirationDate: `${data.expirationMonth} / ${data.expirationYear}`,
+        brandIcon: `${sprite}#icon-${brand}`,
+      });
+
+      setIsSubmitting(false);
+      reset();
+      setOpen(false);
+    }, 800);
   };
 
   return (
@@ -283,8 +289,19 @@ export const NewCardDialog = ({ onAdd }: Props) => {
                   Cancel
                 </Button>
               </DialogClose>
-              <Button variant="default" type="submit">
-                Add Card
+              <Button
+                variant="default"
+                type="submit"
+                disabled={isSubmitting}
+                className="flex items-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <ClipLoader size={10} /> Adding
+                  </>
+                ) : (
+                  "Add Card"
+                )}
               </Button>
             </DialogFooter>
           </form>

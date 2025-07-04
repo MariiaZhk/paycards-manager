@@ -17,14 +17,13 @@ const CardFilter = ({ filterValue, onFilterChange }: CardFilterProps) => {
   };
 
   return (
-    <div>
-      <Input
-        type="text"
-        placeholder="Filter by brand or last 4 digits"
-        value={filterValue}
-        onChange={handleChange}
-      />
-    </div>
+    <Input
+      type="text"
+      placeholder="Brand or last 4 digits"
+      value={filterValue}
+      onChange={handleChange}
+      className="w-full"
+    />
   );
 };
 
