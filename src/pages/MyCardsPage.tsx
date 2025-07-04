@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { mockCards } from "../data/mockCards";
 import type { Card } from "@/common/types";
 import DataTable from "@/components/table/DataTable";
@@ -7,15 +7,35 @@ import { NewCardDialog } from "@/components/dialog/NewCardDialog";
 import { ThemeToggler } from "@/components/theme-toggler/ThemeToggler";
 
 const MyCardsPage = () => {
-  const [cards, setCards] = useState<Card[]>(mockCards);
   const [filter, setFilter] = useState("");
+  const [cards, setCards] = useState<Card[]>(() => {
+    const saved = localStorage.getItem("cards");
+    return saved ? JSON.parse(saved) : mockCards;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cards", JSON.stringify(cards));
+  }, [cards]);
 
   const handleAddCard = (card: Card) => {
     setCards((prev) => [...prev, card]);
+    setFilter("");
   };
 
   const handleDelete = (id: string) => {
-    setCards((prev) => prev.filter((c) => c.id !== id));
+    setCards((prev) => {
+      const newCards = prev.filter((c) => c.id !== id);
+      const deletedCard = prev.find((c) => c.id === id);
+
+      if (deletedCard?.isDefault && newCards.length > 0) {
+        return newCards.map((card, index) => ({
+          ...card,
+          isDefault: index === 0,
+        }));
+      }
+
+      return newCards;
+    });
   };
 
   const handleSetDefault = (id: string) => {

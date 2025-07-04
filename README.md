@@ -4,7 +4,7 @@
 
 🔗 **Live Demo**: _add the link if deployed_
 
-n## 📑 Table of Contents
+## 📑 Table of Contents
 
 - [Description](#description)
 - [Features](#features)
@@ -22,7 +22,7 @@ This application provides an interface for managing payment cards. On the `/my-c
 - Set any card as the default.
 - Delete cards.
 
-The app starts with mocked card data and stores added cards in `localStorage`. It does not persist data to a backend and is intended as a UI prototype or tech demo.
+The app initializes with mocked card data and persists all cards — both the initial mocked ones and any new cards added by the user — in localStorage. The app does not connect to a backend; it is intended as a frontend-only prototype or tech demo.
 
 ## 🚀 Features
 
