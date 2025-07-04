@@ -89,10 +89,10 @@ export const NewCardDialog = ({ onAdd }: Props) => {
 
     if (!isExpirationDateValid(expMonth, expYear)) {
       setError("expirationMonth", {
-        message: "Expiration date cannot be in the past",
+        message: "Card expired",
       });
       setError("expirationYear", {
-        message: "Expiration date cannot be in the past",
+        message: "Card expired",
       });
       return;
     }
@@ -277,6 +277,10 @@ export const NewCardDialog = ({ onAdd }: Props) => {
                       placeholder="••••"
                       inputMode="numeric"
                       autoComplete="cc-csc"
+                      onChange={(e) => {
+                        const onlyDigits = e.target.value.replace(/\D/g, "");
+                        field.onChange(onlyDigits);
+                      }}
                     />
                   </FormControl>
                   <FormMessage />
