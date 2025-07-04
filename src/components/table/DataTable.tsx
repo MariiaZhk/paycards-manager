@@ -16,7 +16,7 @@ interface CardTableProps {
 
 const DataTable = ({ cards, onDelete, onSetDefault }: CardTableProps) => (
   <div className="w-full overflow-x-auto">
-    <Table className="min-w-[600px]">
+    <Table className="min-w-[400px]">
       <TableHeader>
         <TableRow>
           <TableHead>Brand</TableHead>

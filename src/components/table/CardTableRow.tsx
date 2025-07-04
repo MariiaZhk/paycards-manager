@@ -25,9 +25,8 @@ const CardTableRow = ({ card, onDelete, onSetDefault }: CardTableRowProps) => {
       <TableCell>
         <Button
           variant="ghost"
+          size="ghostCompact"
           onClick={() => !card.isDefault && onSetDefault(card.id)}
-          // disabled={card.isDefault}
-          size="sm"
           className={`flex items-center justify-start gap-2 ${
             card.isDefault
               ? "text-[var(--checked)]"
