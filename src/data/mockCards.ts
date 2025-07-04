@@ -5,7 +5,7 @@ export const mockCards: Card[] = [
   {
     id: "1",
     brand: "visa",
-    last4: "1234",
+    last4: "4234",
     isDefault: true,
     expirationDate: "12 / 25",
     brandIcon: `${sprite}#icon-visa`,
@@ -15,7 +15,7 @@ export const mockCards: Card[] = [
     brand: "mastercard",
     last4: "5678",
     isDefault: false,
-    expirationDate: "11 / 24",
+    expirationDate: "11 / 27",
     brandIcon: `${sprite}#icon-mastercard`,
   },
   {
@@ -31,7 +31,7 @@ export const mockCards: Card[] = [
     brand: "mastercard",
     last4: "5670",
     isDefault: false,
-    expirationDate: "05 / 23",
+    expirationDate: "05 / 29",
     brandIcon: `${sprite}#icon-mastercard`,
   },
   {
@@ -41,5 +41,21 @@ export const mockCards: Card[] = [
     isDefault: false,
     expirationDate: "06 / 27",
     brandIcon: `${sprite}#icon-amex`,
+  },
+  {
+    id: "6",
+    brand: "visa",
+    last4: "4867",
+    isDefault: false,
+    expirationDate: "12 / 28",
+    brandIcon: `${sprite}#icon-visa`,
+  },
+  {
+    id: "7",
+    brand: "mastercard",
+    last4: "5010",
+    isDefault: false,
+    expirationDate: "10 / 29",
+    brandIcon: `${sprite}#icon-mastercard`,
   },
 ];

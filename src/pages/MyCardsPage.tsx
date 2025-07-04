@@ -27,11 +27,16 @@ const MyCardsPage = () => {
     );
   };
 
-  const filteredCards = cards.filter(
-    (card) =>
-      card.brand.toLowerCase().includes(filter.toLowerCase()) ||
-      card.last4.includes(filter)
-  );
+  const normalizedFilter = filter.replace(/\s/g, "").toLowerCase();
+
+  const filteredCards = cards.filter((card) => {
+    const brand = card.brand.replace(/\s/g, "").toLowerCase();
+    const last4 = card.last4;
+
+    return (
+      brand.includes(normalizedFilter) || last4.startsWith(normalizedFilter)
+    );
+  });
 
   return (
     <>

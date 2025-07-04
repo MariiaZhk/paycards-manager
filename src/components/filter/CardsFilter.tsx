@@ -6,13 +6,23 @@ interface CardFilterProps {
 }
 
 const CardFilter = ({ filterValue, onFilterChange }: CardFilterProps) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value;
+    const cleanedValue = rawValue.replace(/\s/g, "");
+    const isNumeric = /^\d*$/.test(cleanedValue);
+    if (isNumeric && cleanedValue.length > 4) {
+      return;
+    }
+    onFilterChange(rawValue);
+  };
+
   return (
     <div>
       <Input
         type="text"
         placeholder="Filter by brand or last 4 digits"
         value={filterValue}
-        onChange={(e) => onFilterChange(e.target.value)}
+        onChange={handleChange}
       />
     </div>
   );

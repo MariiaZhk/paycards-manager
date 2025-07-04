@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import type { Card } from "@/common/types";
 import { Button } from "@/components/ui/Button/button";
 import { Input } from "@/components/ui/input";
 import { FaPlus } from "react-icons/fa6";
 import sprite from "../../assets/sprite.svg";
-
 import {
   Dialog,
   DialogTrigger,
