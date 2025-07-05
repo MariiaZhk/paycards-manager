@@ -1,5 +1,5 @@
 import type { Card } from "@/common/types";
-import { Button } from "@/components/ui/Button/button";
+import { Button } from "@/components/ui/button/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { FaTrashCan } from "react-icons/fa6";
 import { ImRadioChecked2 } from "react-icons/im";
