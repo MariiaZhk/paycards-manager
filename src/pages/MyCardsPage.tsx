@@ -75,10 +75,10 @@ const MyCardsPage = () => {
 
   return (
     <>
-      <div className="w-full p-6 bg-[var(--color-card)] rounded-lg shadow-lg max-w-[95%] lg:max-w-[1000px] mx-auto my-8">
+      <div className="w-full p-4 sm:p-6 bg-[var(--color-card)] rounded-lg shadow-lg max-w-[95%] lg:max-w-[800px] mx-auto my-8">
         <div className="flex flex-col  md:items-baseline md:justify-between gap-4 mb-6 px-2">
           <div className="flex flex-wrap items-end justify-between gap-2 w-full">
-            <h1 className="text-2xl font-bold self-center">My Cards</h1>
+            <h1 className="text-2xl font-bold ">My Cards</h1>
             <div className="flex gap-2 items-center">
               <ThemeToggler />
               <NewCardDialog onAdd={handleAddCard} />

@@ -16,13 +16,13 @@ interface CardTableProps {
 
 const DataTable = ({ cards, onDelete, onSetDefault }: CardTableProps) => (
   <div className="w-full overflow-x-auto">
-    <Table className="min-w-[400px]">
+    <Table className="w-full min-w-[400px]">
       <TableHeader>
         <TableRow>
           <TableHead>Brand</TableHead>
-          <TableHead>Last4</TableHead>
-          <TableHead>Default</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead className="w-30">Last4</TableHead>
+          <TableHead className="w-32">Default</TableHead>
+          <TableHead className="w-32">Actions</TableHead>
         </TableRow>
       </TableHeader>
 
