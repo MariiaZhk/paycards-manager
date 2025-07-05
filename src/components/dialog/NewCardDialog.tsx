@@ -88,15 +88,9 @@ export const NewCardDialog = ({ onAdd }: Props) => {
     const expYear = Number("20" + data.expirationYear);
 
     if (!isExpirationDateValid(expMonth, expYear)) {
-      setError("expirationMonth", {
-        message: "Card expired",
-      });
-      setError("expirationYear", {
-        message: "Card expired",
-      });
+      setError("expirationMonth", { message: "Card expired" });
       return;
     }
-
     clearErrors(["expirationMonth", "expirationYear"]);
     setIsSubmitting(true);
 
@@ -185,73 +179,82 @@ export const NewCardDialog = ({ onAdd }: Props) => {
                 </FormItem>
               )}
             />
+            <FormItem>
+              <FormLabel id="expiration-date-label">Expiration Date</FormLabel>
+              <div
+                className="flex gap-2"
+                role="group"
+                aria-labelledby="expiration-date-label"
+              >
+                <FormField
+                  control={control}
+                  name="expirationMonth"
+                  rules={{ required: "Required" }}
+                  render={({ field, fieldState }) => (
+                    <div className="flex flex-col">
+                      <FormControl>
+                        <Select
+                          onValueChange={field.onChange}
+                          value={field.value}
+                          aria-label="Select expiration month"
+                        >
+                          <SelectTrigger size="sm">
+                            <SelectValue placeholder="MM" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {months.map((m) => {
+                              const disabled =
+                                selectedYear === currentYearShort &&
+                                Number(m) < currentMonth;
+                              return (
+                                <SelectItem
+                                  key={m}
+                                  value={m}
+                                  disabled={disabled}
+                                >
+                                  {m}
+                                </SelectItem>
+                              );
+                            })}
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage>{fieldState.error?.message}</FormMessage>
+                    </div>
+                  )}
+                />
 
-            <FormLabel>Expiration Date</FormLabel>
-            <div className="flex gap-2">
-              <FormField
-                control={control}
-                name="expirationMonth"
-                rules={{ required: "Required" }}
-                render={({ field, fieldState }) => (
-                  <FormItem className="w-24">
-                    <FormControl>
-                      <Select
-                        onValueChange={field.onChange}
-                        value={field.value}
-                        disabled={false}
-                        aria-label="Select expiration month"
-                      >
-                        <SelectTrigger size="sm">
-                          <SelectValue placeholder="MM" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {months.map((m) => {
-                            const disabled =
-                              selectedYear === currentYearShort &&
-                              Number(m) < currentMonth;
-                            return (
-                              <SelectItem key={m} value={m} disabled={disabled}>
-                                {m}
+                <FormField
+                  control={control}
+                  name="expirationYear"
+                  rules={{ required: "Required" }}
+                  render={({ field, fieldState }) => (
+                    <div className="flex flex-col">
+                      <FormControl>
+                        <Select
+                          onValueChange={field.onChange}
+                          value={field.value}
+                          aria-label="Select expiration year"
+                        >
+                          <SelectTrigger size="sm">
+                            <SelectValue placeholder="YY" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {years.map((y) => (
+                              <SelectItem key={y} value={y}>
+                                {y}
                               </SelectItem>
-                            );
-                          })}
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    <FormMessage>{fieldState.error?.message}</FormMessage>
-                  </FormItem>
-                )}
-              />
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage>{fieldState.error?.message}</FormMessage>
+                    </div>
+                  )}
+                />
+              </div>
+            </FormItem>
 
-              <FormField
-                control={control}
-                name="expirationYear"
-                rules={{ required: "Required" }}
-                render={({ field, fieldState }) => (
-                  <FormItem className="w-24">
-                    <FormControl>
-                      <Select
-                        onValueChange={field.onChange}
-                        value={field.value}
-                        aria-label="Select expiration year"
-                      >
-                        <SelectTrigger size="sm">
-                          <SelectValue placeholder="YY" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {years.map((y) => (
-                            <SelectItem key={y} value={y}>
-                              {y}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    <FormMessage>{fieldState.error?.message}</FormMessage>
-                  </FormItem>
-                )}
-              />
-            </div>
             <FormField
               control={control}
               name="cvc"
